@@ -29,19 +29,29 @@ function click(key){
             kick.play();
             break;
             
-        }
-    
+        }   
 }
+
+function animation(key1){
+    var activatedButton=document.querySelector("."+key1);
+    activatedButton.classList.add("pressed");
+
+    setTimeout(function(){
+        activatedButton.classList.remove("pressed");
+}, 150)
+}
+
 
 for(var i=0; i<document.querySelectorAll(".drum").length; i++){
     document.querySelectorAll("button")[i].addEventListener("click", function(){
         var buttonInnerHTML=this.innerHTML;
         click(buttonInnerHTML);
-
-
+        animation(buttonInnerHTML);
     });
 }
 
 document.addEventListener("keydown", function(event){
     click(event.key);
+    animation(event.key);
 });
+
